@@ -10,12 +10,6 @@
     </bean>
 
     <bean id="redisFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <!--
-        <property name="hostName" value="${redis.host}"/>
-        <property name="port" value="${redis.port}"/>
-        <property name="usePool" value="${redis.usePool}"/>
-        <property name="poolConfig" ref="redisPool"/>
-        -->
         <constructor-arg name="sentinelConfig" ref="redisSentinelConfiguration"/>
         <constructor-arg name="poolConfig" ref="redisPool"/>
     </bean>
@@ -79,28 +73,5 @@
             </set>
         </property>
     </bean>
-
-
-    <!-- jedis -->
-    <!--<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">-->
-        <!--<property name="maxTotal" value="${redis.maxTotal}"/>-->
-        <!--<property name="maxIdle" value="${redis.maxIdle}"/>-->
-        <!--<property name="testOnBorrow" value="${redis.testOnBorrow}"/>-->
-        <!--<property name="jmxNamePrefix" value="JedisPool"/>-->
-    <!--</bean>-->
-    <!--<bean id="jedisSentinelPool" class="redis.clients.jedis.JedisSentinelPool">-->
-        <!--<constructor-arg index="0" value="${sentinels.redis.masterName}" />-->
-        <!--<constructor-arg index="1">-->
-            <!--<set>-->
-                <!--<value>${sentinels1.redis.host}:${sentinels1.redis.port}</value>-->
-                <!--<value>${sentinels2.redis.host}:${sentinels2.redis.port}</value>-->
-                <!--<value>${sentinels3.redis.host}:${sentinels3.redis.port}</value>-->
-            <!--</set>-->
-        <!--</constructor-arg>-->
-        <!--<constructor-arg index="2" ref="poolConfig" />-->
-    <!--</bean>-->
-    <!--<bean id="jedisTemplate" class="com.tiefan.btc.fss.utils.redis.JedisTemplate">-->
-        <!--<constructor-arg index="0" ref="jedisSentinelPool"/>-->
-    <!--</bean>-->
 
 </beans>

@@ -1,4 +1,4 @@
-package com.gold.service.jetcache;
+package com.gold.service.jetcacheconfig;
 
 
 import com.alicp.jetcache.anno.CacheConsts;
@@ -12,6 +12,7 @@ import com.alicp.jetcache.redis.RedisCacheBuilder;
 import com.alicp.jetcache.support.FastjsonKeyConvertor;
 import com.alicp.jetcache.support.JavaValueDecoder;
 import com.alicp.jetcache.support.JavaValueEncoder;
+import com.gold.common.AppContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.jedis.JedisConnection;
@@ -29,7 +30,7 @@ import java.util.Map;
 @Configuration
 @EnableMethodCache(basePackages = "com.tiefan.btc")
 @EnableCreateCacheAnnotation
-public class JetCacheConfig implements {
+public class JetCacheConfig {
 
     private static final String KEY_PREFIX = "jetcache";
 
@@ -40,7 +41,7 @@ public class JetCacheConfig implements {
      */
     @Bean
     public Pool<Jedis> pool() throws Exception{
-        RedisTemplate redisTemplate = (RedisTemplate)AppContext.getApplicationContext().getBean("redisTemplate");
+        RedisTemplate redisTemplate = (RedisTemplate) AppContext.getApplicationContext().getBean("redisTemplate");
         JedisConnection jedisConnection = (JedisConnection)redisTemplate.getConnectionFactory().getConnection();
         Field field =  JedisConnection.class.getDeclaredField("pool");
         field.setAccessible(true);

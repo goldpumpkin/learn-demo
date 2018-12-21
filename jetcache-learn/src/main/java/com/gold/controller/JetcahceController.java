@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @Author: GoldHuang
+ */
 @Controller
 @RequestMapping("/jetcache")
 public class JetcahceController {
@@ -121,9 +124,9 @@ public class JetcahceController {
     }
 
     /**
-     * ******************************
-     * other属性 相关测试 : condition*
-     * ******************************
+     * **********************************
+     * other属性 相关测试 : PostCondition*
+     * **********************************
      */
 
     /**

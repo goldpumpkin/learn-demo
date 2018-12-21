@@ -27,6 +27,7 @@ import java.util.Map;
 
 /**
  * Jetcahce 配置类
+ * @Author: GoldHuang
  */
 @Configuration
 @EnableMethodCache(basePackages = "com.gold")

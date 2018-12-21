@@ -10,10 +10,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
+ * jetcahce 测试服务类
  * @Author: GoldHuang
- * @Date: 19:21 2018/12/19
- * @Description:
- * @Version: V1.0
  */
 @Service
 public class JetcacheTestService {

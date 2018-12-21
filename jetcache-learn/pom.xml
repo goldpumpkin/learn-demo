@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gold</groupId>
+    <artifactId>jetcache-learn</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>jetcache-learn</name>
+
+    <properties>
+        <jdk.version>1.8</jdk.version>
+        <!-- jetCache -->
+        <jetcache.version>2.5.5</jetcache.version>
+        <!-- lombok -->
+        <lombok.version>1.16.20</lombok.version>
+        <jedis.version>2.8.1</jedis.version>
+        <!-- spring版本号 -->
+        <spring.version>4.3.2.RELEASE</spring.version>
+        <spring.redis.version>1.7.4.RELEASE</spring.redis.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+
+        <!-- jetCache -->
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-anno</artifactId>
+            <version>${jetcache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-redis</artifactId>
+            <version>${jetcache.version}</version>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <!-- redis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+
+        <!-- Spring Redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring.redis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <!--Spring Dependencies-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <profiles>
+        <!-- dev -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.active>dev</profile.active>
+                <profile.path>config/resource/dev</profile.path>
+            </properties>
+        </profile>
+
+        <!-- prd -->
+        <profile>
+            <id>prd</id>
+            <properties>
+                <profile.active>prd</profile.active>
+                <profile.path>config/resource/prd</profile.path>
+            </properties>
+        </profile>
+
+    </profiles>
+
+    <build>
+        <finalName>jetcache-learn</finalName>
+
+        <resources>
+            <!-- 打包指定环境配置文件 -->
+            <resource>
+                <directory>src/main/resources/${profile.path}</directory>
+                <filtering>true</filtering>
+            </resource>
+            <!-- 打包其他(src/main/resources/*/(dev|prd)/*.*格式除外)配置文件 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/dev/*.*</exclude>
+                    <exclude>**/prd/*.*</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <warName>jetcache-learn</warName>
+                        <webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+                        <webResources>
+                            <resource>
+                                <directory>${basedir}/src/main/webapp</directory>
+                                <filtering>true</filtering>
+                                <includes>
+                                    <include>**/*.html</include>
+                                    <include>**/*.js</include>
+                                    <include>**/*.css</include>
+                                    <include>**/*.xml</include>
+                                    <include>**/*.jsp</include>
+                                </includes>
+                            </resource>
+                        </webResources>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.7</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <delimiters>
+                            <delimiter>$[*]</delimiter>
+                        </delimiters>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>none</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <phase>none</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

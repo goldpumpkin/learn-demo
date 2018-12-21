@@ -8,9 +8,9 @@ public class AppContext implements ApplicationContextAware {
 
     private static ApplicationContext context;
 
-    public static ApplicationContext getApplicationContext() {
-        return context;
+    public AppContext() {
     }
+
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

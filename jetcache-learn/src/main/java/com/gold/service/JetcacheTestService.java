@@ -23,6 +23,7 @@ public class JetcacheTestService {
      * test0 : 方法无参 noName noKey
      * key : 配置前缀 + 类名 + 方法名字 + ()[]
      * eg: btc:fss:c.t.b.f.z.JetCacheTestService.testRemote()[]
+     * 方法无参数 默认 []
      *
      * @return
      */
@@ -50,7 +51,7 @@ public class JetcacheTestService {
 
     /**
      * 远程缓存 - key
-     * test1.1 : 注意 与test1的key相同
+     * test1.1 : 注意 与test1的key相同 目的是测试 是否会覆盖value
      * eg : btc:fss:baseData.test.[]
      *
      * @return
@@ -104,7 +105,7 @@ public class JetcacheTestService {
 
     /**
      * 远程缓存 - key
-     * test5 : 方法有自定义对象参数 无指定key
+     * test5 : 方法有自定义对象参数 指定key
      * key : btc:fss:baseData.test.[{"id":2,"name":"gold2"}]
      * eg: btc:fss:baseData.test.3_gold3
      */
@@ -118,7 +119,7 @@ public class JetcacheTestService {
     /**
      * 远程缓存：
      * 出错时 没有缓存
-     * No Key
+     * 说明：此处的 key = "#{str}" 会导致jetcache出错，但不影响主流程，只是不会走缓存
      */
     @Cached(name = "baseData.test.", key = "#{str}", expire = 60, cacheType = CacheType.REMOTE)
     public String testRemoteWithKeysErr(String str) {
@@ -127,9 +128,16 @@ public class JetcacheTestService {
         return s;
     }
 
+    /**
+     * ******************************
+     * other属性 相关测试 : condition*
+     * ******************************
+     */
+
 
     /**
      * 属性condition test1
+     * condition：是否进行缓存的判断条件
      */
     @Cached(name = "baseData.test.", expire = 60, condition = "#flag", cacheType = CacheType.REMOTE)
     public String testCondition(Boolean flag) {
@@ -140,6 +148,7 @@ public class JetcacheTestService {
 
     /**
      * 属性condition test2
+     * condition：是否进行缓存的判断条件
      */
     @Cached(name = "baseData.test.", expire = 60, condition = "#flag.equals(true)", cacheType = CacheType.REMOTE)
     public String testCondition1(Boolean flag) {
@@ -149,7 +158,14 @@ public class JetcacheTestService {
     }
 
     /**
-     * 属性 postCondition - simple Result
+     * **********************************
+     * other属性 相关测试 : PostCondition*
+     * **********************************
+     */
+
+    /**
+     * 属性 postCondition -
+     * 说明：根据执行结果来判断是否需进行缓存
      */
     @Cached(name = "baseData.test.", expire = 60, postCondition = "#result.equals('1')", cacheType = CacheType.REMOTE)
     public String testPostCondition() {
@@ -161,6 +177,7 @@ public class JetcacheTestService {
 
     /**
      * 属性 postCondition
+     * 说明：根据执行结果来判断是否需进行缓存
      */
     @Cached(name = "baseData.test.", expire = 60, postCondition = "#result != null && #result.getId() == 1", cacheType = CacheType.REMOTE)
     public User testPostCondition2() {
@@ -171,16 +188,28 @@ public class JetcacheTestService {
     }
 
     /**
+     * *******************************************
+     * 其他注解 相关测试 : @CachePenetrationProtect*
+     * *******************************************
+     */
+
+    /**
      * 注解：@CachePenetrationProtect
      * 解释: 当缓存访问未命中的情况下，对并发进行的加载行为进行保护。 当前版本实现的是单JVM内的保护，即同一个JVM中同一个key只有一个线程去加载，其它线程等待结果
+     * 事例说明：开启多个线程 调用此方法， 只会有一个线程执行此方法
      */
     @CachePenetrationProtect
     @Cached(name = "baseData.test.2", expire = 60, cacheType = CacheType.REMOTE)
-    public String testCachePenetrationProtect() {
-        System.out.println("[testCachePenetrationProtect] No Cache");
-        String s = Thread.currentThread().getName() + "testRemoteNoArgs-Value:【9】";
-        System.out.println("--------------" + s);
-        return "" + (num++);
+    public String testCachePenetrationProtect()  {
+        try {
+            System.out.println("[testCachePenetrationProtect] No Cache");
+            String s = Thread.currentThread().getName() + "testRemoteNoArgs-Value:【9】";
+            System.out.println("--------------" + s);
+            Thread.sleep(10000L);
+        }catch (Exception e) {
+
+        }
+        return "@CachePenetrationProtect";
     }
 
 

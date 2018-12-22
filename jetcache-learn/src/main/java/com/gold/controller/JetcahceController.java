@@ -49,7 +49,7 @@ public class JetcahceController {
 
     /**
      * cache key 测试：方法无参
-     * 测试远程缓存key是一致的
+     * 测试远程缓存key是一致时，key是要覆盖的
      */
     @RequestMapping(value = "/testRemoteNoArgs1", method = {RequestMethod.POST})
     public void testRemoteNoArgs1(HttpServletResponse response) {
@@ -134,7 +134,7 @@ public class JetcahceController {
      */
     @RequestMapping(value = "/testPostCondition", method = {RequestMethod.POST})
     public void testPostCondition(Boolean flag, HttpServletResponse response) {
-        //System.out.println(jetCacheTestService.testPostCondition());
+        System.out.println(jetCacheTestService.testPostCondition());
     }
 
     /**
@@ -142,7 +142,7 @@ public class JetcahceController {
      */
     @RequestMapping(value = "/testPostCondition2", method = {RequestMethod.POST})
     public void testPostCondition2(Boolean flag, HttpServletResponse response) {
-        // System.out.println(jetCacheTestService.testPostCondition2().toString());
+         System.out.println(jetCacheTestService.testPostCondition2().toString());
     }
 
 
@@ -157,14 +157,14 @@ public class JetcahceController {
      */
     @RequestMapping(value = "/testCachePenetrationProtect", method = {RequestMethod.POST})
     public void testCachePenetrationProtect(Boolean flag, HttpServletResponse response) {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
+            System.out.println("Thread " + i);
             new Thread("" + i) {
                 @Override
                 public void run() {
                     jetCacheTestService.testCachePenetrationProtect();
                 }
-            };
-
+            }.start();
         }
 
     }

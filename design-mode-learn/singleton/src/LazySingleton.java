@@ -2,7 +2,7 @@ package src;
 
 /**
  * @Author: GoldHuang
- * @Description: 懒汉式单例模式
+ * @Description: 懒汉式单例模式 - 非线程安全
  */
 public class LazySingleton {
 

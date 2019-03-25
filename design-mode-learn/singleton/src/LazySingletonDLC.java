@@ -22,7 +22,10 @@ package src;
  */
 public class LazySingletonDLC {
 
-    private static LazySingletonDLC instance;
+    /**
+     * 不会被本地线程缓存，所有对该变量的读写都是直接操作共享内存，从而确保多个线程能正确处理该变量
+     */
+    private volatile static LazySingletonDLC instance;
 
     /**
      * 1. 私有化构造方法

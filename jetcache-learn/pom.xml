@@ -6,7 +6,7 @@
 
     <groupId>com.gold</groupId>
     <artifactId>jetcache-learn</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
 
     <name>jetcache-learn</name>

@@ -24,6 +24,8 @@
 
 	<modules>
 		<module>springcloud-eureka-server</module>
+		<module>springcloud-eureka-producer</module>
+		<module>springcloud-eureka-consumer</module>
 	</modules>
 
 	<build>

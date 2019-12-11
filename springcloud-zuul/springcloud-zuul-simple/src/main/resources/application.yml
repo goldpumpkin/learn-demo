@@ -1,0 +1,12 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: zuul-proxy
+
+zuul:
+  routes:
+    simple:
+      path: /java
+      url: http://www.baidu.com

@@ -1,4 +1,4 @@
-package com.gold.springcloudfeign.feignlog;
+package com.gold.springcloudrequestscope.feignlog;
 
 import feign.Logger;
 import org.springframework.cloud.openfeign.FeignLoggerFactory;

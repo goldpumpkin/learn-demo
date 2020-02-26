@@ -1,13 +1,13 @@
-package com.gold.springcloudfeign.controller;
+package com.gold.springcloudrequestscope.controller;
 
-import com.gold.springcloudfeign.externalapi.BaiduApi;
+import com.gold.springcloudrequestscope.externalapi.BaiduApi;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-public class FeignController {
+public class RequestScopeDataController {
 
     private BaiduApi baiduApi;
 

@@ -1,4 +1,4 @@
-package com.gold.springcloudfeign.externalapi;
+package com.gold.springcloudrequestscope.externalapi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

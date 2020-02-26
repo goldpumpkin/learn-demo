@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.gold</groupId>
-	<artifactId>springcloud-feign</artifactId>
+	<artifactId>springcloud-request_scoped_data</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springcloud-feign</name>
-	<description>Demo project for feign</description>
+	<description>Demo project for Request-Scoped Data</description>
 
 	<properties>
 		<java.version>1.8</java.version>

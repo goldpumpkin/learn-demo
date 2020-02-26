@@ -1,4 +1,4 @@
-package com.gold.springcloudfeign;
+package com.gold.springcloudrequestscope;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class SpringcloudFeignApplication {
+public class SpringcloudRequestScopedDataApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringcloudFeignApplication.class, args);
+        SpringApplication.run(SpringcloudRequestScopedDataApplication.class, args);
     }
 
 }

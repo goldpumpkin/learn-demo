@@ -1,4 +1,4 @@
-package com.gold.springcloudfeign.externalapi;
+package com.gold.springcloudrequestscope.externalapi;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;

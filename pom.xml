@@ -17,8 +17,31 @@
         <module>springcloud-feign</module>
         <module>springcloud-zuul</module>
         <module>springcloud-eureka</module>
+        <module>springcloud-request_scoped_data</module>
     </modules>
 
+    <properties>
+        <lombok.version>1.18.8</lombok.version>
+        <fastjson.version>1.2.58</fastjson.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>

@@ -19,6 +19,7 @@
 
     <modules>
         <module>springcloud-zuul-simple</module>
+        <module>springcloud-zuul-eureka</module>
     </modules>
 
     <build>

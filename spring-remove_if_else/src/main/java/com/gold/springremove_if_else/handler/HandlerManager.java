@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Component
-public class HandlerManager<T extends IHandler> implements InitializingBean {
+public class HandlerManager implements InitializingBean {
 
     private Map<Class, Map<Integer, IHandler>> handlerMap = new HashMap<>();
 
@@ -22,19 +22,18 @@ public class HandlerManager<T extends IHandler> implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         Map<String, IHandler> handlers = ctx.getBeansOfType(IHandler.class);
         handlers.forEach((k, v) -> {
-            IHandler iHandler = v;
-            Class key = iHandler.getKey();
-            Map<Integer, IHandler> integerIHandlerMap = handlerMap.get(iHandler.getKey());
-            if (integerIHandlerMap == null) {
-                integerIHandlerMap = new HashMap<>();
-                handlerMap.put(key, integerIHandlerMap);
+            Class key = v.getKey();
+            Map<Integer, IHandler> internalMap = this.handlerMap.get(v.getKey());
+            if (internalMap == null) {
+                internalMap = new HashMap<>();
+                this.handlerMap.put(key, internalMap);
             }
-            integerIHandlerMap.put(iHandler.getType(), iHandler);
+            internalMap.put(v.getType(), v);
         });
     }
 
-    public IHandler getHandler(Class<T> clz, Integer type) {
-        return Optional.ofNullable(handlerMap.get(clz)).map(e -> e.get(type)).orElse(null);
+    public <T extends IHandler> T getHandler(Class<T> clz, Integer type) {
+        return Optional.ofNullable(handlerMap.get(clz)).map(e -> (T) e.get(type)).orElse(null);
     }
 
 }

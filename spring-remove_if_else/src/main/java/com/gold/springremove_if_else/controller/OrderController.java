@@ -22,14 +22,14 @@ public class OrderController {
     @RequestMapping(value = "/order-status", method = RequestMethod.POST)
     public String orderStatus(@RequestBody CommonOrderStatusReq req) {
         System.out.println(req);
-        IOrderHandler iOrderHandler = (IOrderHandler) handlerManager.getHandler(IOrderHandler.class, req.getStatus());
+        IOrderHandler iOrderHandler = handlerManager.getHandler(IOrderHandler.class, req.getStatus());
         iOrderHandler.handle(req);
         return String.valueOf(req);
     }
 
     @RequestMapping(value = "/order-create", method = RequestMethod.POST)
     public void orderCreate(@RequestBody ActionReq req) {
-        IActionHandler iActionHandler = (IActionHandler) handlerManager.getHandler(IActionHandler.class, req.getActonType());
+        IActionHandler iActionHandler = handlerManager.getHandler(IActionHandler.class, req.getActonType());
         iActionHandler.handle(req);
     }
 }

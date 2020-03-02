@@ -1,6 +1,6 @@
 package com.gold.springremove_if_else.handler;
 
-public interface IHandler<T extends Comparable<T>> {
+public interface IHandler {
 
     Class getKey();
 

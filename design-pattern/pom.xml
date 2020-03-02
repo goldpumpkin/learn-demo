@@ -4,28 +4,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.gold</groupId>
-        <artifactId>springcloud-zuul</artifactId>
+        <artifactId>learn-demo</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>springcloud-zuul-simple</artifactId>
+    <artifactId>design-pattern</artifactId>
     <version>1.0.0</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

@@ -17,7 +17,7 @@
         <module>springcloud-feign</module>
         <module>springcloud-zuul</module>
         <module>springcloud-eureka</module>
-        <module>springcloud-request_scoped_data</module>
+        <module>spring-requested_scope_data</module>
         <module>spring-remove_if_else</module>
     </modules>
 

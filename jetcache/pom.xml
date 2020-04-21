@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gold</groupId>
-    <artifactId>jetcache-learn</artifactId>
+    <artifactId>jetcache</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>jetcache-learn</name>
+    <name>jetcache</name>
 
     <properties>
         <jdk.version>1.8</jdk.version>

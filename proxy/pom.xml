@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gold</groupId>
-    <artifactId>proxy-learn</artifactId>
+    <artifactId>proxyn</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>proxy-learn</name>
+    <name>proxy</name>
 
     <properties>
         <jdk.version>1.8</jdk.version>

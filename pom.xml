@@ -19,6 +19,7 @@
         <module>springcloud-eureka</module>
         <module>spring-requested_scope_data</module>
         <module>spring-remove_if_else</module>
+        <module>springboot-oauth</module>
     </modules>
 
     <properties>
@@ -29,6 +30,8 @@
         <!-- spring boot -->
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+        <spring-security-oauth2.version>2.3.2.RELEASE</spring-security-oauth2.version>
+        <spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +48,19 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- spring oauth2 security -->
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring-security-oauth2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${spring-security-jwt.version}</version>
             </dependency>
 
             <!-- spring boot -->

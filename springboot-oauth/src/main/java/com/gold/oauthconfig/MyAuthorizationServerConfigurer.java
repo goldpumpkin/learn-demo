@@ -1,11 +1,15 @@
 package com.gold.oauthconfig;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+
+import javax.sql.DataSource;
 
 /**
  * @author goldhuang
@@ -16,6 +20,12 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @EnableAuthorizationServer
 public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
 
+    private final DataSource dataSource;
+
+    public MyAuthorizationServerConfigurer(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     /**
      * 配置安全约束相关配置
      * @param security 定义令牌终结点上的安全约束
@@ -23,7 +33,7 @@ public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigur
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        // 支持client_id、client_secret以form表单的形式登录,参考可见：微信获取access token
+        // 支持client_id、client_secret以form表单的形式登录, 参考可见：微信获取access_token
         security.allowFormAuthenticationForClients();
     }
 
@@ -34,15 +44,19 @@ public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigur
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-            // client_id
-            .withClient("gold")
-            // 授权方式
-            .authorizedGrantTypes("client_credentials")
-            // 授权范围
-            .scopes("write")
-            // client_secret
-            .secret("{noop}123456");
+        // 1. 内存存储client信息
+//        clients.inMemory()
+//            // client_id
+//            .withClient("gold")
+//            // 授权方式
+//            .authorizedGrantTypes("client_credentials")
+//            // 授权范围
+//            .scopes("write")
+//            // client_secret
+//            .secret("{noop}123456");
+
+        // 2. 数据库存储
+        clients.jdbc(dataSource).passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
 
     }
 
@@ -53,6 +67,6 @@ public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigur
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        super.configure(endpoints);
+        endpoints.tokenStore(new JdbcTokenStore(dataSource));
     }
 }

@@ -30,7 +30,7 @@
         <!-- spring boot -->
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
-        <spring-security-oauth2.version>2.3.2.RELEASE</spring-security-oauth2.version>
+        <spring-security-oauth2.version>2.3.6.RELEASE</spring-security-oauth2.version>
         <spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
 
         <!-- unit test suit -->

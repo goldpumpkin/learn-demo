@@ -18,4 +18,9 @@ public class ResController {
     public String testOauth(@PathVariable String id) {
         return "Get the resource " + id;
     }
+
+//    @PutMapping("/res/{id}")
+//    public String testWrite(@PathVariable String id) {
+//        return "Write " + id;
+//    }
 }

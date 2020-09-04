@@ -1,13 +1,18 @@
 package com.gold.oauthconfig;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.jwt.crypto.sign.MacSigner;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import javax.sql.DataSource;
 
@@ -21,9 +26,14 @@ import javax.sql.DataSource;
 public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigurerAdapter {
 
     private final DataSource dataSource;
+    private final RedisConnectionFactory redisConnectionFactory;
+    @Value("${jwt.key:GoLdJwtKey}")
+    private String tokenSecretKey;
 
-    public MyAuthorizationServerConfigurer(DataSource dataSource) {
+    public MyAuthorizationServerConfigurer(DataSource dataSource, RedisConnectionFactory redisConnectionFactory) {
         this.dataSource = dataSource;
+        this.redisConnectionFactory = redisConnectionFactory;
+
     }
 
     /**
@@ -67,6 +77,22 @@ public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigur
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(new JdbcTokenStore(dataSource));
+//        TokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+//        TokenStore tokenStore = new JdbcTokenStore(dataSource);
+
+        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+        jwtAccessTokenConverter.setSigningKey(tokenSecretKey);
+        jwtAccessTokenConverter.setVerifier(new MacSigner(tokenSecretKey));
+        TokenStore tokenStore = new JwtTokenStore(jwtAccessTokenConverter);
+
+        endpoints.accessTokenConverter(jwtAccessTokenConverter);
+        endpoints.tokenStore(tokenStore);
     }
+
+//    @Bean
+//    public JwtAccessTokenConverter accessTokenConverter() {
+//        final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+//        converter.setSigningKey(tokenSecretKey);
+//        return converter;
+//    }
 }

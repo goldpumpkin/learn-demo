@@ -1,0 +1,29 @@
+## JPA
+
+### 敏感数据加密的方式
+
+1. 通过 `Convert` 方式
+
+   + 自定义类型
+   + 实现`Convert`
+
+2. 自定义 `Hibernate` 的基本数据类型
+
+   + 自定义类型
+   + 注册
+
+3. 通过`EntityListener`
+
+   repo 未实现
+
+##### *参考*
+
++ [Encrypting JPA entity attributes using listeners in Spring]([https://arnoldgalovics.com/encrypting-jpa-entity-attributes-using-listeners-in-spring)
+
+### 	坑点
+
+1. `@Transactional` 方法中，如果对持久体进行了改变，即使不写`saveOrUpdate` 也会对数据库进行修改
+
+   link：[Transactional saves without calling update method](https://stackoverflow.com/questions/8190926/transactional-saves-without-calling-update-method)
+
+

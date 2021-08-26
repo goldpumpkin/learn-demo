@@ -1,15 +1,15 @@
-server:
-  port: 8001
-  servlet:
-    context-path: /text
-
-spring:
-  application:
-    name: zuul-proxy
-
-
-## 1. 匹配路径 -> 物理地址
-# zuul相关配置
+#server:
+#  port: 8001
+#  servlet:
+#    context-path: /text
+#
+#spring:
+#  application:
+#    name: zuul-proxy
+#
+#
+### 1. 匹配路径 -> 物理地址
+## zuul相关配置
 #zuul:
 #  routes:
 #    # 服务名称 - 自定义
@@ -23,79 +23,83 @@ spring:
 #      # 是否重试
 #      retryable: true
 #      sensitiveHeaders: Test-Sensitive-Header
-
-
-
-# 2.转发到某个服务
-# zuul相关配置
-zuul:
-  host:
-    connect-timeout-millis: 2000
-    socket-timeout-millis: 10000
-  routes:
-    test-service:
-      path: /test/**
-      serviceId: test-service
-      stripPrefix: false
-      retryable: true
-
-# ribbon相关配置：提供负载均衡配置、超时、重试等配置
-ribbon:
-  eureka:
-    enabled: false
-  # 对实例重试的次数(不包括每个实例的首次的请求)
-  MaxAutoRetries: 1
-  # 同一个服务 重试其他实例数量
-  # eg: listOfServers: s1, s2, s3  当此配置为1，第一次访问s1, 请求重试只会在s1、s2中进行
-  MaxAutoRetriesNextServer: 1
-  # 是否所有操作都允许重试。默认值为false
-  OkToRetryOnAllOperations: true
-  # 对Http响应码进行重试
-  retryableStatusCodes: 500,404,502
-  # 请求连接的超时时间 默认值2000
-  ConnectTimeout: 2000
-  # 请求处理的超时时间 默认值5000
-  ReadTimeout: 5000
-  # 最大连接数 默认值200
-  MaxTotalConnections: 200
-  # 每个host最大连接数 默认值50
-  MaxConnectionsPerHost: 5
-
-# 服务配置
-test-service:
-  ribbon:
-    listOfServers: 127.0.0.1:9000, 127.0.0.1:9001, 127.0.0.1:9002
-    retryableStatusCodes: 500
-
-# hystrix配置：提供熔断配置
-hystrix:
-  command:
-    # 服务名称：default or 自己的服务名称
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 3000
-
-
-
-debug: true
-trace: true
-logging:
-  level:
-    org.springframework.retry: DEBUG
-    org.apache.http: TRACE
-    com.netflix: DEBUG
-    com.netflix.loadbalancer.BaseLoadBalancer: DEBUG
-    org:
-      apache:
-        tomcat:
-          util:
-            net:
-              NioEndpoint: INFO
-    com:
-      netflix:
-        loadbalancer:
-          LoadBalancerContext: DEBUG
-          reactive:
-            LoadBalancerCommand: DEBUG
+#    test2:
+#      path: /**
+#      # 转发到的物理地址
+#      url: http://127.0.0.1:1000
+#
+#
+#
+## 2.转发到某个服务
+## zuul相关配置
+##zuul:
+##  host:
+##    connect-timeout-millis: 2000
+##    socket-timeout-millis: 10000
+##  routes:
+##    test-service:
+##      path: /test/**
+##      serviceId: test-service
+##      stripPrefix: false
+##      retryable: true
+#
+## ribbon相关配置：提供负载均衡配置、超时、重试等配置
+##ribbon:
+##  eureka:
+##    enabled: false
+##  # 对实例重试的次数(不包括每个实例的首次的请求)
+##  MaxAutoRetries: 1
+##  # 同一个服务 重试其他实例数量
+##  # eg: listOfServers: s1, s2, s3  当此配置为1，第一次访问s1, 请求重试只会在s1、s2中进行
+##  MaxAutoRetriesNextServer: 1
+##  # 是否所有操作都允许重试。默认值为false
+##  OkToRetryOnAllOperations: true
+##  # 对Http响应码进行重试
+##  retryableStatusCodes: 500,404,502
+##  # 请求连接的超时时间 默认值2000
+##  ConnectTimeout: 2000
+##  # 请求处理的超时时间 默认值5000
+##  ReadTimeout: 5000
+##  # 最大连接数 默认值200
+##  MaxTotalConnections: 200
+##  # 每个host最大连接数 默认值50
+##  MaxConnectionsPerHost: 5
+#
+### 服务配置
+##test-service:
+##  ribbon:
+##    listOfServers: 127.0.0.1:9000, 127.0.0.1:9001, 127.0.0.1:9002
+##    retryableStatusCodes: 500
+#
+## hystrix配置：提供熔断配置
+#hystrix:
+#  command:
+#    # 服务名称：default or 自己的服务名称
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 3000
+#
+#
+#
+#debug: true
+#trace: true
+#logging:
+#  level:
+#    org.springframework.retry: DEBUG
+#    org.apache.http: TRACE
+#    com.netflix: DEBUG
+#    com.netflix.loadbalancer.BaseLoadBalancer: DEBUG
+#    org:
+#      apache:
+#        tomcat:
+#          util:
+#            net:
+#              NioEndpoint: INFO
+#    com:
+#      netflix:
+#        loadbalancer:
+#          LoadBalancerContext: DEBUG
+#          reactive:
+#            LoadBalancerCommand: DEBUG

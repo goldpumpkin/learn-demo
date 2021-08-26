@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password:
+  #    driver-class-name: org.h2.Driver
+  #    url: jdbc:h2:mem:testdb
+  #    username: root
+  #    password: root
+  #    platform: org.hibernate.dialect.H2Dialect
+
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: true
+  #    hibernate:
+#      ddl-auto: none
+##      dialect: org.hibernate.dialect.H2Dialect
+#    generate-ddl: false
+#    database-platform: org.hibernate.dialect.H2Dialect
+#
+#  h2:
+#    console:
+#      enabled: true # 是否启用H2数据库控制台
+#      settings:
+#        web-allow-others: true         # 允许远程浏览器访问H2 数据库控制台
+#        trace: false

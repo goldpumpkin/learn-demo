@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 public class MyResourceServerConfigurer extends ResourceServerConfigurerAdapter {
 
     private static final String RESOURCE_ID = "res";
-//    private static final String SECURED_WRITE_SCOPE = "#oauth2.hasScope('write')";
+    private static final String SECURED_WRITE_SCOPE = "#oauth2.hasScope('write')";
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -26,7 +26,6 @@ public class MyResourceServerConfigurer extends ResourceServerConfigurerAdapter 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/res/**").authenticated();
-        ;
+            .antMatchers("/res/**").access(SECURED_WRITE_SCOPE);
     }
 }

@@ -39,7 +39,7 @@
         <spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
 
         <!-- unit test suit -->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <jupiter.version>5.6.2</jupiter.version>
         <junit-jupiter-mockito.version>3.4.6</junit-jupiter-mockito.version>
         <jmockit.version>1.36</jmockit.version>

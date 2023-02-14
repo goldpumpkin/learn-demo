@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gold</groupId>
-	<artifactId>spring-remove_if_else</artifactId>
+	<artifactId>spring-remove-if-else</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-remove_if_else</name>
 	<description>Demo project for Spring Boot</description>

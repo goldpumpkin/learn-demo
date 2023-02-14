@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-requested_scope_data</artifactId>
+    <artifactId>spring-requested-scope-data</artifactId>
     <version>1.0.0</version>
 
     <dependencies>

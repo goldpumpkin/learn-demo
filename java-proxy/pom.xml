@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gold</groupId>
-    <artifactId>proxy</artifactId>
+    <artifactId>java-proxy</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 

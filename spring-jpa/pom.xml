@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>jpa</artifactId>
+    <artifactId>spring-jpa</artifactId>
     <version>1.0.0</version>
 
     <!-- Project dependencies -->

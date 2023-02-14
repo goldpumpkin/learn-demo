@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>design-pattern</artifactId>
+    <artifactId>java-design-pattern</artifactId>
     <version>1.0.0</version>
 
     <properties>

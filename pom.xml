@@ -10,17 +10,17 @@
     <version>1.0.0</version>
 
     <modules>
-        <module>design-pattern</module>
-        <module>jetcache</module>
-        <module>proxy</module>
-        <module>spi</module>
+        <module>java-design-pattern</module>
+        <module>opensource-jetcache</module>
+        <module>java-proxy</module>
+        <module>java-spi</module>
         <module>springcloud-feign</module>
         <module>springcloud-zuul</module>
         <module>springcloud-eureka</module>
         <module>spring-requested-scope-data</module>
         <module>spring-remove-if-else</module>
         <module>springboot-oauth</module>
-        <module>jpa</module>
+        <module>spring-jpa</module>
     </modules>
 
     <properties>

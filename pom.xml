@@ -21,6 +21,7 @@
         <module>spring-remove-if-else</module>
         <module>springboot-oauth</module>
         <module>spring-jpa</module>
+        <module>spring-mongo</module>
     </modules>
 
     <properties>

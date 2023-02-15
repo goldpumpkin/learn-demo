@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-mongo
+  data:
+    mongodb:
+      # 自建 mongo
+      uri: mongodb://127.0.0.1:27017
+      database: order-service
+      trace: false
+
+logging:
+  level:
+    root: debug

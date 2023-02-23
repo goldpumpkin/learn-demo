@@ -23,6 +23,7 @@
         <module>spring-jpa</module>
         <module>spring-mongo</module>
         <module>opensource-mina</module>
+        <module>middleware-zookeeper</module>
     </modules>
 
     <properties>
@@ -36,6 +37,7 @@
         <slf4j-simple-version>1.7.25</slf4j-simple-version>
 
         <mina-core.version>2.0.16</mina-core.version>
+        <curator.version>5.4.0</curator.version>
 
         <!-- spring boot -->
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
@@ -145,6 +147,19 @@
                 <groupId>org.apache.mina</groupId>
                 <artifactId>mina-core</artifactId>
                 <version>${mina-core.version}</version>
+            </dependency>
+
+            <!--    zookeeper client - apache curator        -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
             </dependency>
 
             <!--    test    -->

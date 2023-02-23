@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-zookeeper
+
+zookeeper:
+  host: localhost
+  port: 2181
+
+logging:
+  level:
+    root: info

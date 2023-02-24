@@ -147,6 +147,24 @@
                 <version>${mina-core.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.mina</groupId>
+                <artifactId>mina-integration-jmx</artifactId>
+                <version>${mina-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.mina</groupId>
+                <artifactId>mina-integration-ognl</artifactId>
+                <version>${mina-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.mina</groupId>
+                <artifactId>mina-integration-jmx</artifactId>
+                <version>${mina-core.version}</version>
+            </dependency>
+
             <!--    test    -->
             <dependency>
                 <groupId>junit</groupId>

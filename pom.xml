@@ -11,18 +11,24 @@
 
     <modules>
         <module>java-design-pattern</module>
-        <module>opensource-jetcache</module>
         <module>java-proxy</module>
         <module>java-spi</module>
+
+        <module>spring-jpa</module>
+        <module>spring-mongo</module>
+        <module>spring-requested-scope-data</module>
+        <module>spring-remove-if-else</module>
+
+        <module>springboot-oauth</module>
+
         <module>springcloud-feign</module>
         <module>springcloud-zuul</module>
         <module>springcloud-eureka</module>
-        <module>spring-requested-scope-data</module>
-        <module>spring-remove-if-else</module>
-        <module>springboot-oauth</module>
-        <module>spring-jpa</module>
-        <module>spring-mongo</module>
+
         <module>opensource-mina</module>
+        <module>opensource-jetcache</module>
+
+        <module>middleware-zookeeper</module>
     </modules>
 
     <properties>
@@ -36,6 +42,7 @@
         <slf4j-simple-version>1.7.25</slf4j-simple-version>
 
         <mina-core.version>2.0.16</mina-core.version>
+        <curator.version>5.4.0</curator.version>
 
         <!-- spring boot -->
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
@@ -147,22 +154,17 @@
                 <version>${mina-core.version}</version>
             </dependency>
 
+            <!--    zookeeper client - apache curator        -->
             <dependency>
-                <groupId>org.apache.mina</groupId>
-                <artifactId>mina-integration-jmx</artifactId>
-                <version>${mina-core.version}</version>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.apache.mina</groupId>
-                <artifactId>mina-integration-ognl</artifactId>
-                <version>${mina-core.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.mina</groupId>
-                <artifactId>mina-integration-jmx</artifactId>
-                <version>${mina-core.version}</version>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
             </dependency>
 
             <!--    test    -->

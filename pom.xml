@@ -154,6 +154,18 @@
                 <version>${mina-core.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.mina</groupId>
+                <artifactId>mina-integration-ognl</artifactId>
+                <version>${mina-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.mina</groupId>
+                <artifactId>mina-integration-jmx</artifactId>
+                <version>${mina-core.version}</version>
+            </dependency>
+
             <!--    zookeeper client - apache curator        -->
             <dependency>
                 <groupId>org.apache.curator</groupId>

@@ -13,11 +13,14 @@ public class Trigger {
     private final LeaderService leaderService;
 
     @GetMapping("hit")
-    public String startInstance() throws InterruptedException {
-//        new Thread(leaderService::take).start();
+    public String hit() {
         leaderService.take();
+        return "start";
+    }
 
-        Thread.sleep(10000L);
+    @GetMapping("always")
+    public String always() {
+        leaderService.hold();
         return "start";
     }
 }

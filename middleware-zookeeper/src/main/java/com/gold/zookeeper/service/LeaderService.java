@@ -15,15 +15,24 @@ public class LeaderService {
 
     private final CuratorFramework curatorFramework;
 
+    /**
+     * 目录必须带 "/"
+     */
     private static final String PATH = "/crown";
 
     public void take() {
         final LeaderSelector selector = build();
-//        selector.autoRequeue();
-
         // 异步执行
         selector.start();
     }
+
+    public void hold() {
+        final LeaderSelector selector = build();
+        selector.autoRequeue();
+        // 异步执行
+        selector.start();
+    }
+
 
     public LeaderSelector build() {
         return new LeaderSelector(curatorFramework, PATH, new LeaderSelectorListener() {
@@ -31,7 +40,7 @@ public class LeaderService {
             public void takeLeadership(CuratorFramework curatorFramework) throws Exception {
                 // 抢到锁
                 log.info("[LeaderSelector] take the crown");
-                Thread.sleep(5000L);
+                Thread.sleep(20000L);
                 log.info("[LeaderSelector] sleep over...");
             }
 

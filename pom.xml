@@ -29,6 +29,7 @@
         <module>opensource-jetcache</module>
 
         <module>middleware-zookeeper</module>
+        <module>springboot-bean-scope</module>
     </modules>
 
     <properties>

@@ -142,7 +142,7 @@ public class JetcahceController {
      */
     @RequestMapping(value = "/testPostCondition2", method = {RequestMethod.POST})
     public void testPostCondition2(Boolean flag, HttpServletResponse response) {
-         System.out.println(jetCacheTestService.testPostCondition2().toString());
+        System.out.println(jetCacheTestService.testPostCondition2().toString());
     }
 
 

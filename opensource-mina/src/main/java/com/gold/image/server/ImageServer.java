@@ -8,11 +8,11 @@ import org.apache.mina.integration.jmx.IoFilterMBean;
 import org.apache.mina.integration.jmx.IoServiceMBean;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
 
 
 public class ImageServer {

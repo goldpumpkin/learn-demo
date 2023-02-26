@@ -1,6 +1,8 @@
 ### SmartLifecycle
 
-Spring Framework 的 `SmartLifecycle` 接口提供了一种声明式的生命周期控制机制，可以在 Spring 应用程序启动和关闭的过程中自动执行一些特定的操作。`SmartLifecycle` 接口继承自 `Lifecycle` 接口，增加了 `isAutoStartup()` 和 `getPhase()` 两个方法，用于控制自动启动和排序顺序。以下是一些使用 `SmartLifecycle` 的典型场景：
+Spring Framework 的 `SmartLifecycle` 接口提供了一种声明式的生命周期控制机制，可以在 Spring
+应用程序启动和关闭的过程中自动执行一些特定的操作。`SmartLifecycle` 接口继承自 `Lifecycle` 接口，增加了 `isAutoStartup()`
+和 `getPhase()` 两个方法，用于控制自动启动和排序顺序。以下是一些使用 `SmartLifecycle` 的典型场景：
 
 1. 缓存初始化和关闭：在应用程序启动时自动初始化缓存，以提高响应速度；在应用程序关闭时自动清空缓存，以确保数据一致性。
 2. 数据库连接池初始化和关闭：在应用程序启动时自动初始化数据库连接池，以便于应用程序访问数据库；在应用程序关闭时自动关闭数据库连接池，以确保资源的释放。

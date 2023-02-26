@@ -24,9 +24,9 @@ public class CryptoStringJavaDescriptor extends AbstractTypeDescriptor<CustomCry
         String encryption = string;
         String ori = encryption.substring(0, encryption.length() - 1);
         return CustomCrypto.builder()
-            .original(ori)
-            .encryption(encryption)
-            .build();
+                .original(ori)
+                .encryption(encryption)
+                .build();
     }
 
     /**
@@ -58,9 +58,9 @@ public class CryptoStringJavaDescriptor extends AbstractTypeDescriptor<CustomCry
             String encryption = (String) value;
             String ori = CryptoUtil.decrypt(encryption);
             return CustomCrypto.builder()
-                .original(ori)
-                .encryption(encryption)
-                .build();
+                    .original(ori)
+                    .encryption(encryption)
+                    .build();
         }
 
         throw unknownWrap(value.getClass());

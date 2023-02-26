@@ -41,8 +41,7 @@ public class ImageClient extends IoHandlerAdapter {
         connectFuture.awaitUninterruptibly(CONNECT_TIMEOUT);
         try {
             session = connectFuture.getSession();
-        }
-        catch (RuntimeIoException e) {
+        } catch (RuntimeIoException e) {
             imageListener.onException(e);
         }
     }

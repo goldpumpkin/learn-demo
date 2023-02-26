@@ -38,7 +38,7 @@ public abstract class AbstractMessageDecoder implements MessageDecoder {
 
     @Override
     public MessageDecoderResult decode(IoSession session, IoBuffer in,
-            ProtocolDecoderOutput out) throws Exception {
+                                       ProtocolDecoderOutput out) throws Exception {
         // Try to skip header if not read.
         if (!readHeader) {
             // Skip 'type'.

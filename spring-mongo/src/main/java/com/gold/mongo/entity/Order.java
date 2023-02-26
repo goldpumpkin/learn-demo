@@ -1,10 +1,6 @@
 package com.gold.mongo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;

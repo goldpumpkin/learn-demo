@@ -1,8 +1,8 @@
 package com.gold.image.client;
 
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import javax.swing.JPanel;
 
 /**
  * JPanel capable of drawing two {@link BufferedImage}'s
@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class ImagePanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    
+
     private BufferedImage image1;
     private BufferedImage image2;
 

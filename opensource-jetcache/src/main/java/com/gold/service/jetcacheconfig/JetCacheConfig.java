@@ -27,6 +27,7 @@ import java.util.Map;
 
 /**
  * Jetcahce 配置类
+ *
  * @Author: GoldHuang
  */
 @Configuration
@@ -41,14 +42,15 @@ public class JetCacheConfig {
 
     /**
      * 获取redis连接池
+     *
      * @return
      * @throws Exception
      */
     @Bean
-    public Pool<Jedis> pool() throws Exception{
+    public Pool<Jedis> pool() throws Exception {
         RedisTemplate redisTemplate = (RedisTemplate) appContext.getBean("redisTemplate");
-        JedisConnection jedisConnection = (JedisConnection)redisTemplate.getConnectionFactory().getConnection();
-        Field field =  JedisConnection.class.getDeclaredField("pool");
+        JedisConnection jedisConnection = (JedisConnection) redisTemplate.getConnectionFactory().getConnection();
+        Field field = JedisConnection.class.getDeclaredField("pool");
         field.setAccessible(true);
         Pool<Jedis> jedisPool = (Pool<Jedis>) field.get(jedisConnection);
         return jedisPool;
@@ -60,7 +62,7 @@ public class JetCacheConfig {
     }
 
     @Bean
-    public GlobalCacheConfig config(SpringConfigProvider configProvider, Pool<Jedis> pool){
+    public GlobalCacheConfig config(SpringConfigProvider configProvider, Pool<Jedis> pool) {
         // Local Cache Config
         Map localBuilders = new HashMap();
         EmbeddedCacheBuilder localBuilder = LinkedHashMapCacheBuilder

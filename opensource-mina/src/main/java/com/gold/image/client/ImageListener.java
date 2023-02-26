@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * TODO Add documentation
- * 
+ *
  * @author waylau.com
  * @date 2015-2-26
  */

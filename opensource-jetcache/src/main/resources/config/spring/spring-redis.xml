@@ -52,7 +52,7 @@
         <property name="master">
             <bean class="org.springframework.data.redis.connection.RedisNode">
                 <!--这个值要和Sentinel中指定的master的值一致，不然启动时找不到Sentinel会报错的-->
-                <property name="name" value="${sentinels.redis.masterName}" />
+                <property name="name" value="${sentinels.redis.masterName}"/>
             </bean>
         </property>
         <!--记住了,这里是指定Sentinel的IP和端口，不是Master和Slave的-->

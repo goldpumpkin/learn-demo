@@ -17,7 +17,7 @@ import org.springframework.cglib.proxy.Enhancer;
  */
 public class CaseExec {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         /** 静态代理 **/
         System.out.println("------------- [static proxy] Plus ----------------");
@@ -61,7 +61,7 @@ public class CaseExec {
     /**
      * jdk_proxy case 1 : simple case
      */
-    public static void jdkProxySimple() throws Exception{
+    public static void jdkProxySimple() throws Exception {
         TestExec testJDKPlus = (TestExec) new LogTimeJdkProxy(new EnglishTest()).bind();
         testJDKPlus.test();
     }
@@ -70,7 +70,7 @@ public class CaseExec {
      * jdk_proxy case 2 : simple case 2
      * remark：说明和静态代理的不同
      */
-    public static void jdkProxySimple2() throws Exception{
+    public static void jdkProxySimple2() throws Exception {
         Animal animal = (Animal) new LogTimeJdkProxy(new Dog()).bind();
         animal.eat();
     }
@@ -82,7 +82,7 @@ public class CaseExec {
         try {
             Runner runner = (Runner) new LogTimeJdkProxy(new Runner()).bind();
             runner.run();
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -91,35 +91,35 @@ public class CaseExec {
     /**
      * cglib_proxy case 1 : simple case
      */
-    public static void cglibProxySimple() throws Exception{
+    public static void cglibProxySimple() throws Exception {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(EnglishTest.class);
         enhancer.setCallback(new TestPlusCglibProxy());
 
-        TestExec testEnglishCGLIBExec = (TestExec)enhancer.create();
+        TestExec testEnglishCGLIBExec = (TestExec) enhancer.create();
         testEnglishCGLIBExec.test();
     }
 
     /**
      * cglib_proxy case 2 : simple case
      */
-    public static void cglibProxySimple2() throws Exception{
+    public static void cglibProxySimple2() throws Exception {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Dog.class);
         enhancer.setCallback(new TestPlusCglibProxy());
 
-        Animal animal = (Animal)enhancer.create();
+        Animal animal = (Animal) enhancer.create();
         animal.eat();
     }
 
     /**
      * cglib_proxy case 3 : 对指定的类生成一个子类，覆盖其中的方法.
      */
-    public static void cglibProxyTestNoInterface() throws Exception{
+    public static void cglibProxyTestNoInterface() throws Exception {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Runner.class);
         enhancer.setCallback(new TestPlusCglibProxy());
-        Runner runner = (Runner)enhancer.create();
+        Runner runner = (Runner) enhancer.create();
         runner.run();
     }
 
@@ -127,7 +127,7 @@ public class CaseExec {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(clz);
         enhancer.setCallback(new TestPlusCglibProxy());
-        TestExec exec = (TestExec)enhancer.create();
+        TestExec exec = (TestExec) enhancer.create();
         return exec;
     }
 

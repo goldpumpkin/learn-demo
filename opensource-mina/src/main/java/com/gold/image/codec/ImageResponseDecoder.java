@@ -6,10 +6,10 @@ import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.CumulativeProtocolDecoder;
 import org.apache.mina.filter.codec.ProtocolDecoderOutput;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
 
 public class ImageResponseDecoder extends CumulativeProtocolDecoder {
@@ -61,5 +61,5 @@ public class ImageResponseDecoder extends CumulativeProtocolDecoder {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         return ImageIO.read(bais);
     }
-    
+
 }

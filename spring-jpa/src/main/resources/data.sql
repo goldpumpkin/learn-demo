@@ -1,11 +1,29 @@
 CREATE TABLE IF NOT EXISTS customer_info
 (
-    id                   bigint unsigned AUTO_INCREMENT PRIMARY KEY,
-    customer_name        varchar(32) NOT NULL,
-    password             varchar(32) NOT NULL DEFAULT '12345678',
-    customer_name_crypto varchar(64) NULL,
-    pwd_crypto           varchar(64) NULL
-);
+    id
+    bigint
+    unsigned
+    AUTO_INCREMENT
+    PRIMARY
+    KEY,
+    customer_name
+    varchar
+(
+    32
+) NOT NULL,
+    password varchar
+(
+    32
+) NOT NULL DEFAULT '12345678',
+    customer_name_crypto varchar
+(
+    64
+) NULL,
+    pwd_crypto varchar
+(
+    64
+) NULL
+    );
 
 insert into customer_info (customer_name, password)
 values ('gold1', 'pw1');

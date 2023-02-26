@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class SingletonManager {
 
-    private static Map<String, Object>  objectMap = new HashMap<String,Object>();
+    private static Map<String, Object> objectMap = new HashMap<String, Object>();
 
     private SingletonManager() {
     }

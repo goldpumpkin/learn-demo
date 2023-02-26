@@ -17,6 +17,7 @@ public class LogTimeJdkProxy implements InvocationHandler {
 
     /**
      * 关联委托类
+     *
      * @param target
      */
     public LogTimeJdkProxy(Object target) {
@@ -25,6 +26,7 @@ public class LogTimeJdkProxy implements InvocationHandler {
 
     /**
      * 绑定关系
+     *
      * @return 返回代理类
      */
     public Object bind() {
@@ -33,9 +35,10 @@ public class LogTimeJdkProxy implements InvocationHandler {
 
     /**
      * 委托类的方法被调用时 将执行此方法
-     * @param proxy 生成的代理类对象
+     *
+     * @param proxy  生成的代理类对象
      * @param method 委托类调用的方法名称
-     * @param args 该方法参数
+     * @param args   该方法参数
      * @return 返回执行结果
      * @throws Throwable
      */
@@ -53,7 +56,6 @@ public class LogTimeJdkProxy implements InvocationHandler {
 
         return result;
     }
-
 
 
 }

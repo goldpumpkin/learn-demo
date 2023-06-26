@@ -1,2 +1,2 @@
 1. 选主。**LeaderSelector** 异步执行选主逻辑，执行完`takeLeadership` 之后，则会释放锁。允许其他实例进行抢主。
-2. 如果你想让此实例，在当选 leader 后，一直持有锁，那么需要在实例化 `LeaderSelector` 对象后，添加 `selector.autoRequeue();` 。但是需要注意，相当于循环执行`takeLeadership` 中的逻辑。
+2. 如果你想让此实例，在当选 leader 后，还想在执行完 `takeLeadership` 逻辑之后，还要抢占锁，那么需要在实例化 `LeaderSelector` 对象后，添加 `selector.autoRequeue();`，表示继续排队抢锁。

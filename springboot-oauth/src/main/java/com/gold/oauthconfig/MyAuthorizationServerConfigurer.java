@@ -38,6 +38,7 @@ public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigur
 
     /**
      * 配置安全约束相关配置
+     *
      * @param security 定义令牌终结点上的安全约束
      * @throws Exception
      */
@@ -49,6 +50,7 @@ public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigur
 
     /**
      * 配置客户端详细信息
+     *
      * @param clients 定义客户端详细信息服务的配置程序。可以初始化客户端详细信息，也可以只引用现有存储。
      * @throws Exception
      */
@@ -71,7 +73,6 @@ public class MyAuthorizationServerConfigurer extends AuthorizationServerConfigur
     }
 
     /**
-     *
      * @param endpoints 定义授权和令牌端点以及令牌服务。
      * @throws Exception
      */

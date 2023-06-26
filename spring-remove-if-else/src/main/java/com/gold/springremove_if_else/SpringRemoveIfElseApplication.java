@@ -8,8 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 public class SpringRemoveIfElseApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringRemoveIfElseApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringRemoveIfElseApplication.class, args);
+    }
 
 }

@@ -3,7 +3,6 @@ package com.gold.service;
 import com.alicp.jetcache.anno.CachePenetrationProtect;
 import com.alicp.jetcache.anno.CacheType;
 import com.alicp.jetcache.anno.Cached;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * jetcahce 测试服务类
+ *
  * @Author: GoldHuang
  */
 @Service
@@ -200,13 +200,13 @@ public class JetcacheTestService {
      */
     @CachePenetrationProtect
     @Cached(name = "baseData.test.2", expire = 60, cacheType = CacheType.REMOTE)
-    public String testCachePenetrationProtect()  {
+    public String testCachePenetrationProtect() {
         try {
             System.out.println("[testCachePenetrationProtect] No Cache");
             String s = Thread.currentThread().getName() + "testRemoteNoArgs-Value:【9】";
             System.out.println("--------------" + s);
             Thread.sleep(10000L);
-        }catch (Exception e) {
+        } catch (Exception e) {
 
         }
         return "@CachePenetrationProtect";

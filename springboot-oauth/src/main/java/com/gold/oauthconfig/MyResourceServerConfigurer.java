@@ -26,6 +26,6 @@ public class MyResourceServerConfigurer extends ResourceServerConfigurerAdapter 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/res/**").access(SECURED_WRITE_SCOPE);
+                .antMatchers("/res/**").access(SECURED_WRITE_SCOPE);
     }
 }

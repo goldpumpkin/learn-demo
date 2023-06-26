@@ -6,6 +6,6 @@ spring:
     password:
 
   redis:
-    host: {ur-redis-host}
-    password: {ur-redis-pwd}
-    database: {ur-redis-db}
+    host: { ur-redis-host }
+    password: { ur-redis-pwd }
+    database: { ur-redis-db }

@@ -11,13 +11,7 @@ import com.gold.mongo.vo.OrderVO;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -49,8 +43,8 @@ public class OrderController {
 
     @GetMapping("page")
     public String listByPage(@RequestParam("accountId") String accountId,
-            @RequestParam("minCreateTime") Date minCreateTime,
-            @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+                             @RequestParam("minCreateTime") Date minCreateTime,
+                             @RequestParam(value = "pageSize", required = false) Integer pageSize) {
         final List<Order> orders = orderRepository.listCondition(accountId, null, minCreateTime, pageSize);
         final List<OrderVO> decorate = orderDecorator.decorate(orders);
         return JSON.toJSONString(decorate);

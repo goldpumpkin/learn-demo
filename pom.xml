@@ -29,6 +29,7 @@
         <module>opensource-jetcache</module>
 
         <module>middleware-zookeeper</module>
+        <module>spring-actuator-prometheus</module>
     </modules>
 
     <properties>
@@ -43,6 +44,8 @@
 
         <mina-core.version>2.0.16</mina-core.version>
         <curator.version>5.4.0</curator.version>
+        <registry-prometheus.version>1.11.0</registry-prometheus.version>
+        <micrometer.version>1.11.0</micrometer.version>
 
         <!-- spring boot -->
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
@@ -177,6 +180,19 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
+            </dependency>
+
+            <!--    prometheus registry      -->
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-core</artifactId>
+                <version>${micrometer.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-registry-prometheus</artifactId>
+                <version>${registry-prometheus.version}</version>
             </dependency>
 
             <!--    test    -->

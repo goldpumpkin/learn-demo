@@ -1,7 +1,7 @@
 package com.gold.prometheus.metrics;
 
 import io.micrometer.prometheus.PrometheusMeterRegistry;
-import io.prometheus.client.Counter;
+import io.prometheus.client.Gauge;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,27 +9,30 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class CounterMetrics implements InitializingBean {
+public class GaugeMetrics implements InitializingBean {
 
-    private static final String REQUEST_COUNT = "place_order_request";
+    private static final String TEMPERATURE = "temperature";
 
-    private Counter placeOrderReqCounter;
+    private Gauge temperatureGauge;
 
     @Autowired
     private PrometheusMeterRegistry prometheusMeterRegistry;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        placeOrderReqCounter = Counter.build(REQUEST_COUNT, "The number of placing order request")
-                .labelNames("securityType", "side")
+        temperatureGauge = Gauge.build(TEMPERATURE, "temperature")
+                .labelNames("body")
                 .register(prometheusMeterRegistry.getPrometheusRegistry());
-   }
+    }
 
-    public void incPlaceOrderReq(String securityType, String side) {
+    /**
+     * 记录温度
+     */
+    public void logTemperature(double temperature) {
         try {
-            placeOrderReqCounter.labels(securityType, side).inc();
+            temperatureGauge.labels("body").set(temperature);
         } catch (Exception e) {
-            log.error("record orderReqLatency error", e);
+            log.error("log temperature error", e);
         }
     }
 

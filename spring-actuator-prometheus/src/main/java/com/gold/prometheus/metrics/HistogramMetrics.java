@@ -1,7 +1,7 @@
 package com.gold.prometheus.metrics;
 
 import io.micrometer.prometheus.PrometheusMeterRegistry;
-import io.prometheus.client.Counter;
+import io.prometheus.client.Histogram;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,27 +9,28 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class CounterMetrics implements InitializingBean {
+public class HistogramMetrics implements InitializingBean {
 
-    private static final String REQUEST_COUNT = "place_order_request";
+    private static final String REQUEST_LATENCY = "request_latency";
 
-    private Counter placeOrderReqCounter;
+    private Histogram requestLatency;
 
     @Autowired
     private PrometheusMeterRegistry prometheusMeterRegistry;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        placeOrderReqCounter = Counter.build(REQUEST_COUNT, "The number of placing order request")
-                .labelNames("securityType", "side")
+        requestLatency = Histogram.build(REQUEST_LATENCY, "request latency")
+                .labelNames("place_order_request")
+                .buckets(0.1, 0.5, 1.0, 2.0, 5.0, 10.0)
                 .register(prometheusMeterRegistry.getPrometheusRegistry());
-   }
+    }
 
-    public void incPlaceOrderReq(String securityType, String side) {
+    public void record(double duration) {
         try {
-            placeOrderReqCounter.labels(securityType, side).inc();
+            requestLatency.labels("place_order_request").observe(duration);
         } catch (Exception e) {
-            log.error("record orderReqLatency error", e);
+            log.error("log place_order_request error", e);
         }
     }
 

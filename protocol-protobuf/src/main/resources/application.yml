@@ -1,0 +1,12 @@
+server:
+  port: 10020
+
+spring:
+  application:
+    name: spring-protocol-protobuf
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+
+logging:
+  level:
+    root: info

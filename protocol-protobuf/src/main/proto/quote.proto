@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package rpc;
+
+option java_outer_classname = "Quote";
+option java_package = "com.gold.protobuf.bean";
+
+message QuoteInfoVo {
+
+  string securityId = 1;
+  string symbol = 2;
+  string exchange = 3;
+  string bid = 4;
+  string ask = 5;
+
+}
+
+message QuoteInfoVoList {
+  repeated QuoteInfoVo items = 1;
+}

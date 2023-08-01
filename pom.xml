@@ -32,6 +32,7 @@
         <module>springboot-bean-scope</module>
         <module>spring-actuator-prometheus</module>
         <module>spring-spel</module>
+        <module>protocol-protobuf</module>
     </modules>
 
     <properties>
@@ -48,6 +49,7 @@
         <curator.version>5.4.0</curator.version>
         <registry-prometheus.version>1.11.0</registry-prometheus.version>
         <micrometer.version>1.11.0</micrometer.version>
+        <protobuf-java.version>3.21.7</protobuf-java.version>
 
         <!-- spring boot -->
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
@@ -61,6 +63,7 @@
         <junit-jupiter-mockito.version>3.4.6</junit-jupiter-mockito.version>
         <jmockit.version>1.36</jmockit.version>
         <powermock.version>2.0.2</powermock.version>
+        <spring-kafka-test.version>3.0.4</spring-kafka-test.version>
     </properties>
 
     <dependencyManagement>
@@ -197,6 +200,13 @@
                 <version>${registry-prometheus.version}</version>
             </dependency>
 
+            <!-- protobuf -->
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf-java.version}</version>
+            </dependency>
+
             <!--    test    -->
             <dependency>
                 <groupId>junit</groupId>
@@ -232,6 +242,13 @@
                 <groupId>org.powermock</groupId>
                 <artifactId>powermock-api-mockito2</artifactId>
                 <version>${powermock.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka-test</artifactId>
+                <version>${spring-kafka-test.version}</version>
+                <scope>test</scope>
             </dependency>
 
         </dependencies>

@@ -34,6 +34,7 @@ public class QuoteConsumer {
             }
         }
 
+
         ack.acknowledge();
     }
 

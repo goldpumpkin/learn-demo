@@ -33,6 +33,7 @@
         <module>spring-actuator-prometheus</module>
         <module>spring-spel</module>
         <module>protocol-protobuf</module>
+        <module>freemaker</module>
     </modules>
 
     <properties>

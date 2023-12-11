@@ -18,11 +18,24 @@
         <xalan.version>2.7.3</xalan.version>
         <jfreechart.version>1.5.0</jfreechart.version>
         <freemarker.version>2.3.30</freemarker.version>
+        <xmlgraphics.version>1.17</xmlgraphics.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
         <!-- html to PDF -->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-bridge</artifactId>
+            <version>${xmlgraphics.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-transcoder</artifactId>
+            <version>${xmlgraphics.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.openhtmltopdf</groupId>
             <artifactId>openhtmltopdf-pdfbox</artifactId>
